@@ -114,5 +114,4 @@ class Paddle():
 if __name__=="__main__":
     game = Paddle()
     while True:
-        print(game.ball.ycor())
         game.run_frame()
