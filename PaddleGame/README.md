@@ -3,7 +3,7 @@
 ## Paddle.py
 The actual game which can be played by human or AI.
 
-![paddleGame](../asset/paddleGame.png)
+<img src = "../asset/paddleGame.png" height="400" width="400">
 
 ## PaddleEnv.py
 The paddle game environment which defines the state and reward.
