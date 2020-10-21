@@ -6,4 +6,4 @@ Using reinforcement learning deep Q network to train an agent to play the paddle
 
 Detail: https://github.com/lit26/ReinforcementLearningProjects/tree/main/PaddleGame
 
-![paddleGame](./asset/paddleGame.png=100x100))
+<img src = "./asset/paddleGame.png" height="250" width="250">
