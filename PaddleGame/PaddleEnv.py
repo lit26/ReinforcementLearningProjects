@@ -49,7 +49,11 @@ class PaddleEnv(gym.Env):
             reward += 5
         elif (done):
             reward -= 5
-        else:
-            reward -= 0.1
         state = self._next_observation()
         return state, reward, done, {}
+
+    def render(self):
+        pass
+
+    def close(self):
+        pass
