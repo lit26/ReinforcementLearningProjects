@@ -17,4 +17,4 @@ current location of the paddle, x-coordinate difference between the ball and pad
 The training of the game using Deep Q Network.
 
 ## Remark
-Stable baseline is inefficient.
+Stable baseline is inefficient for training reinforcement learning environment.
