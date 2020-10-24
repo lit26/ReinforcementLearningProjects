@@ -15,3 +15,6 @@ current location of the paddle, x-coordinate difference between the ball and pad
 
 ## train.py
 The training of the game using Deep Q Network.
+
+## Remark
+Stable baseline is inefficient.
