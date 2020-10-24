@@ -13,7 +13,7 @@ class PaddleEnv(gym.Env):
         self.action_space = spaces.Discrete(3)
 
         # Observation: paddle x coordinates, ball location and ball direction
-        self.observation_space = spaces.Box(low=-1, high=1, shape=(1, 6), dtype=np.float16)
+        self.observation_space = spaces.Box(low=-1, high=1, shape=(1,6), dtype=np.float16)
 
     def _next_observation(self):
         # Get the state of the environment
@@ -41,14 +41,16 @@ class PaddleEnv(gym.Env):
         reward = 0
         if action == 0:
             self.game.movement(action='left')
+            reward -= 0.01
         elif action == 2:
             self.game.movement(action='right')
+            reward -= 0.01
 
         hit, done = self.game.run_frame()
         if (hit):
-            reward += 5
+            reward += 10
         elif (done):
-            reward -= 5
+            reward -= 10
         state = self._next_observation()
         return state, reward, done, {}
 
