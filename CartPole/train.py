@@ -1,18 +1,19 @@
 import gym
-from stable_baselines import DQN
-from stable_baselines.common.vec_env import DummyVecEnv
-from stable_baselines.common.evaluation import evaluate_policy
+import numpy as np
+from RLmodel import build_model
+from RLagent import build_agent
+from tensorflow.keras.optimizers import Adam
 
-env = gym.make('CartPole-v1')
+env = gym.make('CartPole-v0')
+states = env.observation_space.shape[0]
+actions = env.action_space.n
 
-env = DummyVecEnv([lambda: env])
-model = DQN('MlpPolicy', env, verbose=1,
-            tensorboard_log="./dqn_cartpole_tensorboard/")
+model = build_model(states, actions)
+dqn = build_agent(model, actions)
+dqn.compile(Adam(lr=1e-3), metrics=['mae'])
 
-model.learn(total_timesteps=100000)
+dqn.fit(env, nb_steps=50000, visualize=False, verbose=1)
+scores = dqn.test(env, nb_episodes=10, visualize=False)
+print(np.mean(scores.history['episode_reward']))
 
-result = evaluate_policy(model, env, n_eval_episodes=10, render=True)
-print(result)
-env.close()
-
-model.save('cartpole_model')
+dqn.save_weights('weights/dqn_weights.h5f', overwrite=True)
